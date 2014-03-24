@@ -21,10 +21,12 @@ $config['migration_enabled'] = true;
 | be upgraded / downgraded to.
 |
 */
-$config['migration_version'] = 20140228091723;
+#$config['migration_version'] = 20140228091723;
+$config['migration_version'] = 11;
 
 // Set migration type to timestamp to avoid conflicts
-$config['migration_type']    = 'timestamp';
+#$config['migration_type']    = 'timestamp';
+$config['migration_type']    = 'sequential';
 
 
 /*
