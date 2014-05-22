@@ -21,12 +21,11 @@ $config['migration_enabled'] = true;
 | be upgraded / downgraded to.
 |
 */
-#$config['migration_version'] = 20140228091723;
-$config['migration_version'] = 11;
+// Format for migration_type = unmark: (YYYYMMDDXX format where XX is an incremented sequence of changes in selected day)
+$config['migration_version'] = 2014022801;
 
 // Set migration type to timestamp to avoid conflicts
-#$config['migration_type']    = 'timestamp';
-$config['migration_type']    = 'sequential';
+$config['migration_type']    = 'unmark';
 
 
 /*
@@ -40,6 +39,16 @@ $config['migration_type']    = 'sequential';
 |
 */
 $config['migration_path'] = APPPATH . 'migrations/';
+
+/*
+ * Due to switch from timestamp to unmark numbering (to support 32-bit systems), we need to add mappings
+ * for already created migration files, to port on 64-bit systems properly
+ * If you've created custom migrations, please add entries to this config in form of
+ * old number (timestamp) => new number (YYYYMMDDXX format where XX is an incremented sequence of changes in selected day)
+ */
+$config['migration_mappings'] = array(
+	'20140228091723' => '2014022801',
+);
 
 
 /* End of file migration.php */
